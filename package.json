@@ -22,7 +22,8 @@
     "test:clean": "rimraf testapp/node_modules testapp/plugins testapp/platforms testapp/temp-module-copy",
     "test:install": "cd testapp && npm i",
     "test:android": "cd testapp && cordova platform add android && cordova prepare android && cordova build",
-    "test:build": "run-s test:clean test:install test:android"
+    "test:build": "run-s test:clean test:install test:android",
+    "lint": "npx eslint --cache --fix www && prettier --write www"
   },
   "engines": {
     "cordova": ">=10.0.0"
@@ -34,6 +35,8 @@
   },
   "homepage": "https://github.com/okhiroyuki/cordova-plugin-usb-serial#readme",
   "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
     "npm-run-all2": "6.1.1",
     "prettier": "3.0.3",
     "rimraf": "5.0.5"
