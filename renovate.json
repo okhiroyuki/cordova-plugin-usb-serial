@@ -16,6 +16,10 @@
     {
       "automerge": true,
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+    },
+    {
+      "automerge": true,
+      "matchManagers": ["pre-commit"]
     }
   ]
 }
