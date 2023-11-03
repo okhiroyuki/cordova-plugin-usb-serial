@@ -17,7 +17,7 @@ public class UsbBroadcastReceiver extends BroadcastReceiver {
 	// logging tag
 	private final String TAG = UsbBroadcastReceiver.class.getSimpleName();
 	// usb permission tag name
-	public static final String USB_PERMISSION ="fr.drangies.cordova.serial.USB_PERMISSION";
+	public static final String USB_PERMISSION ="org.apache.cordova.plugins.serial.USB_PERMISSION";
 	// cordova callback context to notify the success/error to the cordova app
 	private CallbackContext callbackContext;
 	// cordova activity to use it to unregister this broadcast receiver
@@ -44,17 +44,18 @@ public class UsbBroadcastReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();
 		if (USB_PERMISSION.equals(action)) {
-			// deal with the user answer about the permission
-			if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
-				Log.d(TAG, "Permission to connect to the device was accepted!");
-				callbackContext.success("Permission to connect to the device was accepted!");
-			}
-			else {
-				Log.d(TAG, "Permission to connect to the device was denied!");
-				callbackContext.error("Permission to connect to the device was denied!");
-			}
-			// unregister the broadcast receiver since it's no longer needed
-			activity.unregisterReceiver(this);
+      synchronized (this) {
+        // deal with the user answer about the permission
+        if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
+          Log.d(TAG, "Permission to connect to the device was accepted!");
+          callbackContext.success("Permission to connect to the device was accepted!");
+        } else {
+          Log.d(TAG, "Permission to connect to the device was denied!");
+          callbackContext.error("Permission to connect to the device was denied!");
+        }
+        // unregister the broadcast receiver since it's no longer needed
+        activity.unregisterReceiver(this);
+      }
 		}
 	}
 }

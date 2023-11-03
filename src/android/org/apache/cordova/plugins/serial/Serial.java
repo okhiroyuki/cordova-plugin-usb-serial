@@ -200,7 +200,7 @@ public class Serial extends CordovaPlugin {
 					driver = availableDrivers.get(0);
 					UsbDevice device = driver.getDevice();
 					// create the intent that will be used to get the permission
-					PendingIntent pendingIntent = PendingIntent.getBroadcast(cordova.getActivity(), 0, new Intent(UsbBroadcastReceiver.USB_PERMISSION), PendingIntent.FLAG_IMMUTABLE);
+					PendingIntent pendingIntent = PendingIntent.getBroadcast(cordova.getActivity(), 0, new Intent(UsbBroadcastReceiver.USB_PERMISSION), PendingIntent.FLAG_MUTABLE);
 					// and a filter on the permission we ask
 					IntentFilter filter = new IntentFilter();
 					filter.addAction(UsbBroadcastReceiver.USB_PERMISSION);
@@ -280,7 +280,7 @@ public class Serial extends CordovaPlugin {
 					Log.d(TAG, data);
 					byte[] buffer = data.getBytes();
 					port.write(buffer, 1000);
-					callbackContext.success("character written.");
+					callbackContext.success(buffer.length + "character written.");
 				}
 				catch (IOException | NullPointerException e) {
 					// deal with error
@@ -307,7 +307,7 @@ public class Serial extends CordovaPlugin {
 					Log.d(TAG, data);
 					byte[] buffer = hexStringToByteArray(data);
 					port.write(buffer, 1000);
-					callbackContext.success("bytes written.");
+					callbackContext.success(buffer.length + "bytes written.");
 				}
 				catch (IOException | StringIndexOutOfBoundsException | NullPointerException e) {
 					// deal with error
