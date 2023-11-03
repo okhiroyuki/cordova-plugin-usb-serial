@@ -27,6 +27,5 @@
         <framework src="src/android/usb-serial.gradle" custom="true" type="gradleReference"/>
         <source-file src="src/android/org/apache/cordova/plugins/serial/Serial.java" target-dir="src/org/apache/cordova/plugins/serial" />
         <source-file src="src/android/org/apache/cordova/plugins/serial/UsbBroadcastReceiver.java" target-dir="src/org/apache/cordova/plugins/serial" />
-        <lib-file src="lib/usb-serial-for-android-3.7.0.aar"/>
     </platform>
 </plugin>
