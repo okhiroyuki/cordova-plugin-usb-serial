@@ -227,6 +227,10 @@ public class Serial extends CordovaPlugin {
 	private void openSerial(final JSONObject opts, final CallbackContext callbackContext) {
 		cordova.getThreadPool().execute(new Runnable() {
 			public void run() {
+        if (driver == null) {
+          callbackContext.error("Request permissions before attempting opening port");
+          return;
+        }
 				UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
 				if (connection != null) {
 					// get first port and open it
@@ -280,7 +284,7 @@ public class Serial extends CordovaPlugin {
 					Log.d(TAG, data);
 					byte[] buffer = data.getBytes();
 					port.write(buffer, 1000);
-					callbackContext.success(buffer.length + "character written.");
+					callbackContext.success("character written.");
 				}
 				catch (IOException | NullPointerException e) {
 					// deal with error
@@ -307,7 +311,7 @@ public class Serial extends CordovaPlugin {
 					Log.d(TAG, data);
 					byte[] buffer = hexStringToByteArray(data);
 					port.write(buffer, 1000);
-					callbackContext.success(buffer.length + "bytes written.");
+					callbackContext.success("bytes written.");
 				}
 				catch (IOException | StringIndexOutOfBoundsException | NullPointerException e) {
 					// deal with error
@@ -414,7 +418,7 @@ public class Serial extends CordovaPlugin {
 	 * Observe serial connection
 	 */
 	private void startIoManager() {
-		if (driver != null) {
+		if (port != null) {
 			Log.i(TAG, "Starting io manager.");
 			mSerialIoManager = new SerialInputOutputManager(port, mListener);
 			mExecutor.submit(mSerialIoManager);
