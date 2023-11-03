@@ -7,9 +7,9 @@ Want a module for your Arduino board that provides:
 - Storage
 - *AND* connectivity? (WiFi + 3G + Bluetooth)
 
-Hey, why not just use your Android phone/tablet? 
+Hey, why not just use your Android phone/tablet?
 
-This Cordova/Phonegap plugin allows two-way serial communication using *USB On-The-Go* (OTG) from your Android device to your Arduino board or other USB-powered serial IO device. 
+This Cordova/Phonegap plugin allows two-way serial communication using *USB On-The-Go* (OTG) from your Android device to your Arduino board or other USB-powered serial IO device.
 
 And that means that ability to give your Arduino project a mobile app (web-view) interface as well as powering it using the rechargeable battery on your phone!
 
@@ -264,10 +264,10 @@ void loop() {
 
 ## Your Device is not (yet) known?
 
-Thanks to [usb-serial-for-android](https://github.com/mik3y/usb-serial-for-android) library, you can communicate with CDC, FTDI, Arduino and other devices. 
+Thanks to [usb-serial-for-android](https://github.com/mik3y/usb-serial-for-android) library, you can communicate with CDC, FTDI, Arduino and other devices.
 
 Your device might not be listed over at https://github.com/mik3y/usb-serial-for-android .
-If you know your devices VID (Vendor ID) and PID (Product ID) you could however try 
+If you know your devices VID (Vendor ID) and PID (Product ID) you could however try
 
 ```js
 serial.requestPermission({vid: '1d50', pid: '607d'}, function success(), function error()); //hex strings
@@ -307,7 +307,7 @@ You can find your devices VID and PID on linux or android using "lsusb" (returni
 2014.07: [Hendrik Maus](https://github.com/hendrikmaus): Implemented writeHex for working with RS232 protocol, i.e. javascript can now pass "ff", java turns it into a 1 byte array and writes to the serial port - naturally, java, and the existing write method here, would create a 2 byte array from the input string.
 
 2014.04: [Derek K](https://github.com/etx): Implemented registerReadCallback for evented reading and Android onPause/onResume
-         
+
 2014.03: [Ed. Lafargue](https://github.com/elafargue): Implemented read(). The success callback returns a Javascript ArrayBuffer which is the best way to handle binary data in Javascript. It is straightforward to convert this to a string if required - a utility function could be implemented in this plugin.
 
 2013.11: [Xavier Seignard](https://github.com/xseignard): First implementation

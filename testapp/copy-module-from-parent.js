@@ -16,5 +16,5 @@ const options = {
 copy(modulePath, path.join(appProjectRoot, "temp-module-copy"), options)
   .then(() => console.log("Module from parent folder copied successfully."))
   .catch((err) =>
-    console.log("Error while copying module from parent folder: " + err)
+    console.log("Error while copying module from parent folder: " + err),
   );

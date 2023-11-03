@@ -22,7 +22,7 @@ public class UsbBroadcastReceiver extends BroadcastReceiver {
 	private CallbackContext callbackContext;
 	// cordova activity to use it to unregister this broadcast receiver
 	private Activity activity;
-	
+
 	/**
 	 * Custom broadcast receiver that will handle the cordova callback context
 	 * @param callbackContext
@@ -33,7 +33,7 @@ public class UsbBroadcastReceiver extends BroadcastReceiver {
 		this.activity = activity;
 	}
 
-	
+
 	/**
 	 * Handle permission answer
 	 * @param context
@@ -48,7 +48,7 @@ public class UsbBroadcastReceiver extends BroadcastReceiver {
 			if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
 				Log.d(TAG, "Permission to connect to the device was accepted!");
 				callbackContext.success("Permission to connect to the device was accepted!");
-			} 
+			}
 			else {
 				Log.d(TAG, "Permission to connect to the device was denied!");
 				callbackContext.error("Permission to connect to the device was denied!");
@@ -56,5 +56,5 @@ public class UsbBroadcastReceiver extends BroadcastReceiver {
 			// unregister the broadcast receiver since it's no longer needed
 			activity.unregisterReceiver(this);
 		}
-	}	
+	}
 }

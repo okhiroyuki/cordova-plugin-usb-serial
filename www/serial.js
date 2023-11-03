@@ -1,4 +1,4 @@
-var serial = {
+const serial = {
   requestPermission: function (opts, successCallback, errorCallback) {
     if (typeof opts === "function") {
       //user did not pass opts
