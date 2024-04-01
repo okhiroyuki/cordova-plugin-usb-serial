@@ -37,7 +37,7 @@
   "devDependencies": {
     "eslint": "8.53.0",
     "eslint-config-prettier": "9.0.0",
-    "npm-run-all2": "6.1.1",
+    "npm-run-all2": "6.1.2",
     "prettier": "3.0.3",
     "rimraf": "5.0.5"
   }
