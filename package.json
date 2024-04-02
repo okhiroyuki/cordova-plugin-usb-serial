@@ -36,7 +36,7 @@
   "homepage": "https://github.com/okhiroyuki/cordova-plugin-usb-serial#readme",
   "devDependencies": {
     "eslint": "8.57.0",
-    "eslint-config-prettier": "9.0.0",
+    "eslint-config-prettier": "9.1.0",
     "npm-run-all2": "6.1.2",
     "prettier": "3.0.3",
     "rimraf": "5.0.5"
